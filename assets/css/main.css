@@ -32,7 +32,7 @@ html, body {
     width: 33.33%;
 }
 .app-header nav ul li.active {
-
+background: lightblue;
 }
 .app-header nav ul li a .arrow-up {
     opacity: 0;

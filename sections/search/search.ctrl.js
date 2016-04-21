@@ -2,27 +2,25 @@ angular.module('app.core').controller('SearchController', function (ShowService,
 	var vm = this;
 	vm.results = false;
 	vm.searching = false;
-
+	vm.currentPage = 1;
+	vm.totalResults = 0;
 
 	vm.query = function(query) {
 		vm.searching = true;
-		ShowService.search(query).then(function(responce){
-			vm.results = responce;
+		ShowService.search(query, vm.currentPage).then(function(responce){
+			vm.results = responce.results;
+			vm.totalResults = responce.total_results;
 			$timeout(function(){
 				vm.searching =false;
 			}, 500);
 		});
 	};
 
-	vm.trackShow = function(show) {
-        StoreFactory.addShow(show);
-    };
-
-    vm.unTrackShow = function(id) {
-        StoreFactory.removeShow(id);
-    };
-
-    vm.hasShow = function(id) {
-        return (StoreFactory.getShow(id) !== false);
-    };
+	vm.typeahead = function(query){
+		return ShowService.search(query, 1).then(function(responce){
+			return responce.results.map(function(show){
+				return show.name;
+			});
+		});
+	};
 });

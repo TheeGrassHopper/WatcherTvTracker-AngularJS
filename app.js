@@ -1,1 +1,1 @@
-angular.module('app', ['app.routes', 'app.core', 'app.services']);
+angular.module('app', ['app.routes', 'app.core', 'app.services','tabDirective']);
