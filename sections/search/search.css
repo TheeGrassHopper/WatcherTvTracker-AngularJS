@@ -133,3 +133,7 @@
     border-bottom: 3px solid #ba382c;
     text-shadow: 0 -1px 0 #8a3030;
 }
+
+.pagination-container {
+    text-align: center;
+}

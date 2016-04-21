@@ -1,0 +1,13 @@
+<nav>
+    <ul>
+        <li ng-class="{active: panel.isSelected(1)}">
+            <a href="#/" ng-click="panel.selectTab(1)">What's on <div class="arrow-up"></div></a>
+        </li>
+        <li ng-class="{active: panel.isSelected(2)}">
+            <a href="#/my-shows" ng-click="panel.selectTab(2)">My Shows <div class="arrow-up"></div></a>
+        </li>
+        <li ng-class="{active: panel.isSelected(3)}">
+            <a href="#/search" ng-click="panel.selectTab(3)">Search <div class="arrow-up"></div></a>
+        </li>
+    </ul>
+</nav>

@@ -8,7 +8,8 @@ angular
 function dataService($http, API_KEY, BASE_URL, $log) {
   var data = {
       'get': get,
-      'search': search
+      'search': search,
+      'getSeason':getSeason
   };
 
   // function reposible only to make the json api call
@@ -35,10 +36,14 @@ function dataService($http, API_KEY, BASE_URL, $log) {
 
   // function responsole only to get the search input
   // passs it into the function that is hitting the api
-  function search(query) {
-  	return makeRequest('search/tv', {query: query}).then(function(data) {
-  		return data.results; 		
+  function search(query, page) {
+  	return makeRequest('search/tv', {query: query, page: page}).then(function(data) {
+  		return data; 		
   	});
+  }
+
+  function getSeason(showId, seasonNumber){
+    return makeRequest('tv/' + showId + '/season/' + seasonNumber, {});
   }
 
   return data;

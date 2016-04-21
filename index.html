@@ -6,23 +6,14 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" type="text/css" href="sections/search/search.css">
+    <link rel="stylesheet" type="text/css" href="components/show/show.css">
+    <link rel="stylesheet" type="text/css" href="components/next-on/next-on.css">
+    <link rel="stylesheet" type="text/css" href="sections/show/show.css">
 </head>
 <body ng-app="app">
     <header class="app-header">
         <div class="logo">TvTracker</div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="#/">What's on <div class="arrow-up"></div></a>
-                </li>
-                <li>
-                    <a href="#/my-shows">My Shows <div class="arrow-up"></div></a>
-                </li>
-                <li>
-                    <a href="#/search">Search <div class="arrow-up"></div></a>
-                </li>
-            </ul>
-        </nav>
+        <panel-tab></panel-tab>
     </header>
 
     <main class="main-container container" ng-view></main>
@@ -30,6 +21,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
+
     <script src="assets/js/ui-bootstrap-tpls-0.12.1.min.js"></script>
     <script src="assets/js/angular-local-storage.min.js"></script>
 
@@ -37,7 +30,8 @@
     <script src="app.js"></script>
     <script src="app.core.js"></script>
     <script src="app.routes.js"></script>
-    <script src="app.service.js"></script>
+    <script src="app.services.js"></script>
+
 
 
     <script src="sections/my-shows/my-shows.ctrl.js"></script>
@@ -46,7 +40,11 @@
     <script src="sections/whats-on/whats-on.ctrl.js"></script>
        
     <script src="services/show.fct.js"></script>
-    <script src="services/store.fct.js"></script> 
+    <script src="services/store.fct.js"></script>
+    <script src="components/tabs/tab.directives.js"></script>
+    <script src="components/show/show.drct.js"></script>
+    <script src="components/next-on/next-on.drct.js"></script>
+    <script src="directives/min-words.drct.js"></script>
 
 
 </body>

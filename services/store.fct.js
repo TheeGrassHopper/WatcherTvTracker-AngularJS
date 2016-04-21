@@ -2,8 +2,8 @@ angular
 	.module('app.services')
 	.factory('StoreFactory', dataService);
 
-function dataService(localStorageService){
-	var _show = [];
+function dataService(localStorageService, $rootScope){
+	var _shows = [];
 
 	var ls = localStorageService.get('store');
 	if(ls !== null){
@@ -18,18 +18,21 @@ function dataService(localStorageService){
 	};
 
 	function addShow(data){
-		_show.push(data);
+		_shows.push(data);
 		save();
 	}
 
-	function getShow(id){
-			angular.forEach(_show, function(show){
-				if( show.id === id){
-					return show;
-				}
-		});
-		return result;
-	}
+	function getShow(id) {
+        var result = false;
+        angular.forEach(_shows, function(show){
+            if (result === false) {
+                if (show.id == id) {
+                    result = show;
+                }
+            }
+        });
+        return result;
+    }
 
 	function getShows(){
 		return _shows;
@@ -38,7 +41,7 @@ function dataService(localStorageService){
 	function removeShow(id){
 		var idx = -1;
 		var found = false;
-		angular.forEach(_show, function(show){
+		angular.forEach(_shows, function(show){
 			if(found === false) {
 				if (show.id === id) {
 					found = true;
@@ -47,12 +50,19 @@ function dataService(localStorageService){
 			}
 		});
 		if(found === true) {
-			_show.splice(idx, 1);
+			_shows.splice(idx, 1);
 			save();
 		}
 	}
 	function save(){
 		localStorageService.set('store',_shows);
 	}
+
+	$rootScope.$watch(function(){
+		return _shows;
+	}, function(){
+		save();
+	}, true);
+
 	return service;
 }
